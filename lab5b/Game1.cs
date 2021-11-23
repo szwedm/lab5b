@@ -11,7 +11,7 @@ namespace lab5b {
         private BasicEffect effect;
 
         private Net net;
-        private Cube cube;
+        private Cube cube1, cube2;
 
         private Vector3 cameraPos = new Vector3(0, 0, 100);
         private Vector3 cameraTarget = Vector3.Zero;
@@ -48,7 +48,8 @@ namespace lab5b {
             net = new Net(GraphicsDevice, new Vector3(-60, 0, -60), new Vector3(60, 0, 60));
             net.Load();
 
-            cube = new Cube(GraphicsDevice);
+            cube1 = new Cube(GraphicsDevice, new Vector3(10, 10, 0), 1, 1);
+            cube2 = new Cube(GraphicsDevice, new Vector3(20, 10, 20), 3, 3);
         }
 
         protected override void Update(GameTime gameTime) {
@@ -78,7 +79,8 @@ namespace lab5b {
             effect.View = view;
             effect.Projection = projection;
 
-            cube.Update(view, projection);
+            cube1.Update(view, projection);
+            cube2.Update(view, projection);
 
             base.Update(gameTime);
         }
@@ -88,7 +90,8 @@ namespace lab5b {
 
             // TODO: Add your drawing code here
             net.DrawWithCoordinateSystem(view, projection);
-            cube.Draw();
+            cube1.Draw();
+            cube2.Draw();
 
             base.Draw(gameTime);
         }
